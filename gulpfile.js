@@ -32,15 +32,10 @@ function compileJs() {
     .pipe(gulp.dest("./dist/scripts"));
 }
 
-function compileZip() {
-  return gulp.src("src/**/*").pipe(zip("site.zip")).pipe(gulp.dest("dist"));
-}
-
 function defaultTask(cb) {
   compileSass();
   compileImgs();
   compileJs();
-  compileZip();
   cb();
 }
 
