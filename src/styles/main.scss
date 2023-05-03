@@ -1,5 +1,6 @@
 @use "header";
 @use "options";
+@use "info";
 @use "variables";
 
 * {
@@ -13,8 +14,6 @@ body {
   background-image: url(../../dist/assets/homem_aranha_cellphone_wallpaper.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
-  height: 100vh;
 }
 
 a {
@@ -33,5 +32,6 @@ button {
 @media (min-width: variables.$mobile-screen) {
   body {
     background-image: url(../../dist/assets/homem_aranha_desktop_wallpaper.jpg);
+    height: 100vh;
   }
 }
