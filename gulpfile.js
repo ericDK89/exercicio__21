@@ -3,6 +3,7 @@ const imagemin = require("gulp-imagemin");
 const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
+const zip = require("gulp-zip");
 
 function compileSass() {
   return gulp
@@ -31,13 +32,16 @@ function compileJs() {
     .pipe(gulp.dest("./dist/scripts"));
 }
 
+function compileZip() {
+  return gulp.src("src/**/*").pipe(zip("site.zip")).pipe(gulp.dest("dist"));
+}
+
 function defaultTask(cb) {
   compileSass();
   compileImgs();
   compileJs();
+  compileZip();
   cb();
 }
 
-exports.default = function () {
-  gulp.watch("./src/**", { ignoreInitial: false }, gulp.series(defaultTask));
-};
+exports.default = gulp.series(defaultTask);
