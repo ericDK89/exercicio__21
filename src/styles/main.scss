@@ -1,0 +1,32 @@
+@use "header";
+@use "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-image: url(../../dist/assets/homem_aranha_cellphone_wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+@media (min-width: variables.$mobile-screen) {
+  body {
+    background-image: url(../../dist/assets/homem_aranha_desktop_wallpaper.jpg);
+  }
+}

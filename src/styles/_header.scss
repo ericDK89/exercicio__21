@@ -1,0 +1,51 @@
+@use "variables";
+
+.header {
+  display: flex;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  &__title {
+    &--is-mobile {
+      display: none;
+    }
+
+    &__img {
+      width: 80px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 1rem;
+    margin-left: 5rem;
+
+    &--is-mobile {
+      margin-left: 0;
+    }
+
+    &__item {
+      text-transform: uppercase;
+      color: variables.$primary-color;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+
+  &__avatar {
+    margin-left: auto;
+    border-radius: 9999px;
+  }
+}
