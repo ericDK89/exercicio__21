@@ -4,6 +4,7 @@ const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
 const htmlmin = require("gulp-htmlmin");
+const replace = require("gulp-replace");
 
 function compileSass() {
   return gulp
@@ -39,11 +40,19 @@ function compileHTML() {
     .pipe(gulp.dest("dist"));
 }
 
+function replaceRoutes() {
+  return gulp
+    .src("index.html")
+    .pipe(replace("dist/", ""))
+    .pipe(gulp.dest("dist"));
+}
+
 function defaultTask(cb) {
   compileSass();
   compileImgs();
   compileJs();
   compileHTML();
+  replaceRoutes();
   cb();
 }
 
