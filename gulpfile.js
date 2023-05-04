@@ -3,6 +3,7 @@ const imagemin = require("gulp-imagemin");
 const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
+const htmlmin = require("gulp-htmlmin");
 
 function compileSass() {
   return gulp
@@ -31,10 +32,18 @@ function compileJs() {
     .pipe(gulp.dest("./dist/scripts"));
 }
 
+function compileHTML() {
+  return gulp
+    .src("*.html")
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest("dist"));
+}
+
 function defaultTask(cb) {
   compileSass();
   compileImgs();
   compileJs();
+  compileHTML();
   cb();
 }
 
