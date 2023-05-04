@@ -40,10 +40,17 @@ function compileHTML() {
     .pipe(gulp.dest("dist"));
 }
 
-function replaceRoutes() {
+function replaceHTMLRoutes() {
   return gulp
     .src("index.html")
     .pipe(replace("dist/", ""))
+    .pipe(gulp.dest("dist"));
+}
+
+function replaceCSSRoutes() {
+  return gulp
+    .src("./src/styles/*.scss")
+    .pipe(replace("../../dist/assets/", "../assets/"))
     .pipe(gulp.dest("dist"));
 }
 
@@ -52,7 +59,8 @@ function defaultTask(cb) {
   compileImgs();
   compileJs();
   compileHTML();
-  replaceRoutes();
+  replaceHTMLRoutes();
+  replaceCSSRoutes();
   cb();
 }
 
